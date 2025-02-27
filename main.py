@@ -4,13 +4,24 @@
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+def main():
+    ent = input(
+        "This program scans the current directory for files and lists their names.\n"
+        "It then searches for a file matching the pattern AXB.txt, where A and B are letters,\n"
+        "and X is a single digit (0-9).\n\n"
+        "If exactly one matching file is found, its contents are copied to FOUNDit.txt\n"
+        "and displayed on the screen.\n\n"
+        "Press ENTER to proceed."
+    )
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    if ent == "":
+        print("You pressed ENTER")
+
+
+    else:
+        print("You did not press ENTER")
+
+
+main()
