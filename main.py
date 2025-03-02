@@ -17,7 +17,9 @@ def validity(line):
         return False
     return True
 
-def file_search():
+def file_search(): #First we have to check if the file exists
+    #Once it opens, determine its validity. If it is valid, return the file name and the list of numbers
+
     path = os.getcwd()
     while True:
         file_name = input("Enter the name of the file you are looking for: ")
@@ -30,20 +32,45 @@ def file_search():
             print("The file does not exist. Please try again.")
             continue
 
+def average(numbers, file_name): #This function is meant to handle the average, low, average, and other number processing
+    hi = max(numbers)
+    lo = min(numbers)
+    #With the high and low numbers, we can now calculate the average
+    med = (hi + lo) / 2
+    print(f"Hi is{hi}\n Lo is {lo}\n and Med is {med}")
+    numbers_class = []
+    for num in numbers_class:
+        if num == med:
+            numbers_class.append("Med")
+        elif num > hi:
+            numbers_class.append("Hi")
+        else:
+            numbers_class.append("Lo")
+
+    #Create a new file called Mymatrix.txt
+    new_file = f"HiMedLo{file_name}"
+    with open(new_file, "w") as file:
+        file.write(",".join(numbers_class))
+
+def matrix():
+    file_matrix = "Mymatrix.txt"
+    if not os.path.isfile(file_matrix):
+        print("The file does not exist.")
+        return
 
 def main():
     ent = input(
-        "This program scans the current directory for files and lists their names.\n"
-        "It then searches for a file matching the pattern AXB.txt, where A and B are letters,\n"
-        "and X is a single digit (0-9).\n\n"
-        "If exactly one matching file is found, its contents are copied to FOUNDit.txt\n"
-        "and displayed on the screen.\n\n"
-        "Press ENTER to proceed."
+        "This program will process a file containing a list of non-negative integers, "
+        "classify them based on their values, and then generate a new output file. Additionally, "
+        "it will read a matrix from another file and create its transposed version."
+        ""
     )
 
     if ent == "":
         print("You pressed ENTER")
-
+        file_name, numbers = file_search()
+        average(numbers, file_name)
+        matrix()
 
     else:
         print("You did not press ENTER")
