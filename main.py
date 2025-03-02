@@ -55,8 +55,27 @@ def average(numbers, file_name): #This function is meant to handle the average, 
 def matrix():
     file_matrix = "Mymatrix.txt"
     if not os.path.isfile(file_matrix):
-        print("The file does not exist.")
+        print("The file MyMatrix.txt does not exist.")
+        input("Press ENTER to exit.")
         return
+    with open(file_matrix, "r") as file:
+        lines = file.readlines()
+        if len(lines) != 2:
+            print("The file does not have exactly two lines.")
+            input("Press ENTER to exit.")
+            return
+
+        matrix = [list(map(int, line.strip().split(","))) for line in lines]
+        if len(matrix[0]) != len(matrix[1]):
+            print("The lines do not have the same number of integers.")
+            input("Press ENTER to exit.")
+            return
+
+    transposed = list(zip(*matrix))
+    with open("Transposed.txt", "w") as file:
+        for row in transposed:
+            file.write(",".join(map(str, row)) + "\n")
+
 
 def main():
     ent = input(
