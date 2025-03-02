@@ -1,3 +1,0 @@
-Hi is 27
-Lo is 0
-Average is 13.500

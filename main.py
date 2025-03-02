@@ -1,4 +1,23 @@
 #This project is done in Python in Jetbrains IDE editor.
+# ================================
+# How to Run the Python Program
+# ================================
+
+# 1. Ensure Python is installed:
+#    - Download and install Python from the official website:
+#      https://www.python.org/downloads/
+#    - Verify installation by running: python --version (or python3 --version)
+
+# 2. Open a terminal or command prompt:
+#    - Navigate to the directory where your main.py file is located.
+
+# 3. Run the program:
+#    - Execute the following command:
+#      python main.py  (or python3 main.py on some systems)
+
+# 4. Follow the on-screen instructions:
+#    - The program will prompt you for input as described in the code.
+
 #) https://docs.python.org/3/library/functions.html#max
 #https://www.w3schools.com/python/python_lists_comprehension.asp
 #https://www.geeksforgeeks.org/python-list-comprehension/
@@ -7,7 +26,7 @@
 import os
 import re
 
-def validity(line):
+def validity(line): #This function is the basis for the rest of the program by following formating rules
     parts = line.strip().split(",")#this is to check if the file has proper syntax structure for the reading
     if len(parts) < 2 or len(parts) >= 100:
         print("The file does not have the correct syntax structure.")
