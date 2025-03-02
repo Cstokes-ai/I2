@@ -23,8 +23,9 @@ def file_search(): #First we have to check if the file exists
     path = os.getcwd()
     while True:
         file_name = input("Enter the name of the file you are looking for: ")
-        if os.path.isfile(path):
-            with open(file_name, "r") as file:
+        file_path = os.path.join(path, file_name)
+        if os.path.isfile(file_path):
+            with open(file_path, "r") as file:
                 for line in file:
                     if validity(line):
                         return file_name,list(map(int, line.split(",")))
@@ -50,7 +51,11 @@ def average(numbers, file_name): #This function is meant to handle the average, 
     #Create a new file called Mymatrix.txt
     new_file = f"HiMedLo{file_name}"
     with open(new_file, "w") as file:
-        file.write(",".join(numbers_class))
+        file.write(f"Hi is {hi}\n")
+        file.write(f"Lo is {lo}\n")
+        file.write(f"Average is {med:.3f}\n")
+        file.write(" ".join(numbers_class))
+    print(" ".join(numbers_class))
 
 def matrix():
     file_matrix = "Mymatrix.txt"
@@ -79,10 +84,11 @@ def matrix():
 
 def main():
     ent = input(
-        "This program will process a file containing a list of non-negative integers, "
-        "classify them based on their values, and then generate a new output file. Additionally, "
-        "it will read a matrix from another file and create its transposed version."
-        ""
+        "\nThis program will:\n"
+        "  - Process a file containing a list of non-negative integers.\n"
+        "  - Classify the numbers based on their values and generate a new output file.\n"
+        "  - Read a matrix from another file and create its transposed version.\n"
+        "\nPress Enter to proceed..."
     )
 
     if ent == "":
@@ -94,5 +100,7 @@ def main():
     else:
         print("You did not press ENTER")
 
+    print("Thank you for using the program.")
+    input("Press ENTER to exit.")
 
 main()
